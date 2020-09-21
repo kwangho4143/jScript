@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>condition.html</title>
+    
+</head>
+<body>
+    <div id = "showResult" style="border: 1px solid aquamarine;"></div>
+    
+    <script>
+       
+    //    var i = 5;
+    //    var elem = document.getElementById("showResult");
+    //    var tag = "<table border = '1'><tr>";
+    //    while(i>-1){
+    //         tag += "<td>" + i + "</td>";
+    //         if(i%2==0){
+    //             tag += "</tr><tr>"
+    //         }
+    //         i--;
+    //    }
+    //    tag += "</tr></table>";
+       
+    //    console.log(tag);
+    //    elem.innerHTML = tag;
+       
+        var cols = ['일','월','화','수','목','금','토'];
+       for(var i=0;i<cols.length;i++){
+            console.log(cols[i]);
+       }
+       //for(sitrng str;list) 와 같이 사용
+    //    for(col of cols){
+    //         console.log(col);
+    //    }
+    //    cols.forEach(function(a,b,c) {
+    //         console.log(a,b,c);
+    //    });
+
+       var i = 1;
+       var elem = document.getElementById("showResult");
+       var tag = "<table border = '1'>";
+        for(col of cols){
+            console.log(col);
+            tag += "<td>" + col + "</td>";
+       }
+       
+       while(i<=30){
+            if(i%7==1){
+                tag += "<tr><td style='border: 1px solid red;'>"+i+"</td>";
+            }else {
+                //tag += "<td>" + i + "</td>";
+                tag = tag +"<td>" + i +"</td>"
+            }
+            i++;
+       }
+       tag += "</tr></table>";
+       
+       console.log(tag);
+       elem.innerHTML = tag;
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+       
+       
+       
+       //////////////////
+       
+        // var bool1 = null; 
+        // var sum = 0;
+
+        // for(var i=0;i<5;i++){
+        //     bool1= !bool1;
+        //     if(bool1){
+        //         sum += i;
+        //     }
+        // }
+        // console.log(sum);
+
+
+        
+        
+        // for(var i=0;i<5;i++){
+        //     bool1= !bool1;
+        //     console.log(i,bool1);
+        // }
+
+        
+        // if(bool1){
+        //     console.log("참: " + bool1);
+        // }else{
+        //     console.log(bool1);
+        // }
+        //자바스크립트는 변수에 값이 있으면 참으로 인식을 한다
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calendar.html</title>
+</head>
+
+<body>
+    <div id="showResult" style="border: 1px solid aquamarine;"></div>
+    <script>
+
+        var today = new Date();
+        // console.log(today.getFullYear());
+        // console.log(today.getMonth());
+        // console.log(today.getDate());
+
+        var year = today.getFullYear();
+        var month = today.getMonth();
+        var todate = today.getDate();
+        today.setDate(1);
+        console.log("todate: " + today.getDate());
+        console.log("today: " + today.getDay());
+        console.log(new Date(2020, 9, 0).getDate());
+        var finaldate = new Date(2020, 9, 0).getDate(); 
+
+        var cols = ['일', '월', '화', '수', '목', '금', '토'];
+        for (var i = 0; i < cols.length; i++) {
+            console.log(cols[i]);
+        }
+
+
+        var i = 1;
+        var elem = document.getElementById("showResult");
+        var tag = "<table border = '1'>";
+        for (col of cols) {
+            
+            tag += "<td>" + col + "</td>";
+        }
+
+        while (i <= finaldate) {
+            if (i % 7 == 1) {
+                tag += "<tr><td style='border: 1px solid red;'>" + i + "</td>";
+            } else {
+                tag = tag + "<td>" + i + "</td>"
+            }
+            i++;
+        }
+        tag += "</tr></table>";
+
+        console.log(tag);
+        elem.innerHTML = tag;
+
+
+    </script>
+</body>
+
+</html>
