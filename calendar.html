@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calendar.html</title>
+    <style>
+        div :hover
+    </style>
+
+
 </head>
 
 <body>
@@ -22,8 +27,9 @@
         today.setDate(1);
         console.log("todate: " + today.getDate());
         console.log("today: " + today.getDay());
+        var startday = today.getDay();
         console.log(new Date(2020, 9, 0).getDate());
-        var finaldate = new Date(2020, 9, 0).getDate(); 
+        var finaldate = new Date(2020, 9, 0).getDate();
 
         var cols = ['일', '월', '화', '수', '목', '금', '토'];
         for (var i = 0; i < cols.length; i++) {
@@ -31,27 +37,47 @@
         }
 
 
-        var i = 1;
+        var j = 1;
         var elem = document.getElementById("showResult");
         var tag = "<table border = '1'>";
+       
         for (col of cols) {
-            
+
             tag += "<td>" + col + "</td>";
         }
 
-        while (i <= finaldate) {
-            if (i % 7 == 1) {
-                tag += "<tr><td style='border: 1px solid red;'>" + i + "</td>";
-            } else {
-                tag = tag + "<td>" + i + "</td>"
-            }
-            i++;
-        }
-        tag += "</tr></table>";
+        var cnt=0;
+        
+       
+        
+        for(var i=0;i<startday;i++){
 
+            if(i==0)
+                tag = tag + "<tr>"+"</tr>";   
+            
+            tag = tag + "<td>" + "</td>";
+            cnt++;
+        }
+    
+
+        for(var i=1;i<=finaldate;i++){  
+            if(i==1){
+                tag = tag + "<td>" + i + "</td>";
+            }
+            
+            else if (cnt % 7 == 0) {
+                 tag += "<tr><td style='border: 1px solid red;'>" + i + "</td>";
+                } 
+            else {
+                     tag = tag + "<td>" + i + "</td>";
+            }
+            cnt++;
+        }
+        
+              
         console.log(tag);
         elem.innerHTML = tag;
-
+                   
 
     </script>
 </body>
