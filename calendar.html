@@ -5,78 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calendar.html</title>
+    <script src = "calendar.js"></script>
     <style>
-        div :hover
+      
     </style>
 
 
 </head>
 
 <body>
+    <input type="text" id= "year">년도
+    <input type="text" id= "month" >월
+    <input type="text" id= "date" >일 <button id= "sel">조회</button>
     <div id="showResult" style="border: 1px solid aquamarine;"></div>
     <script>
 
-        var today = new Date();
-        // console.log(today.getFullYear());
-        // console.log(today.getMonth());
-        // console.log(today.getDate());
 
-        var year = today.getFullYear();
-        var month = today.getMonth();
-        var todate = today.getDate();
-        today.setDate(1);
-        console.log("todate: " + today.getDate());
-        console.log("today: " + today.getDay());
-        var startday = today.getDay();
-        console.log(new Date(2020, 9, 0).getDate());
-        var finaldate = new Date(2020, 9, 0).getDate();
+        var sel =document.getElementById('sel');
 
-        var cols = ['일', '월', '화', '수', '목', '금', '토'];
-        for (var i = 0; i < cols.length; i++) {
-            console.log(cols[i]);
-        }
-
-
-        var j = 1;
-        var elem = document.getElementById("showResult");
-        var tag = "<table border = '1'>";
-       
-        for (col of cols) {
-
-            tag += "<td>" + col + "</td>";
-        }
-
-        var cnt=0;
-        
        
         
-        for(var i=0;i<startday;i++){
+        sel.onclick = function(){        
+            showList();
 
-            if(i==0)
-                tag = tag + "<tr>"+"</tr>";   
-            
-            tag = tag + "<td>" + "</td>";
-            cnt++;
         }
-    
 
-        for(var i=1;i<=finaldate;i++){  
-            if(i==1){
-                tag = tag + "<td>" + i + "</td>";
-            }
-            
-            else if (cnt % 7 == 0) {
-                 tag += "<tr><td style='border: 1px solid red;'>" + i + "</td>";
-                } 
-            else {
-                     tag = tag + "<td>" + i + "</td>";
-            }
-            cnt++;
-        }
+
+
+
+
+
         
-              
-        console.log(tag);
-        elem.innerHTML = tag;
                    
 
     </script>

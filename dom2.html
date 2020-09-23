@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom2.html</title>
+    <!-- <script src="dom1.js"></script> -->
+    <script src="dom.js"></script>
+    
+    <style>
+        .lis{
+            background-color: aquamarine;
+        }
+        .hh{
+            color: blue;
+        }
+        
+    </style>
+</head>
+<body id= "bdy" onload="loadPage()">
+    
+    
+    <!-- <ul>
+        <li>오렌지</li>
+    </ul> -->
+    <script>
+        document.querySelectorAll("body");//밑에꺼와 같은 역할
+        console.log(document.querySelectorAll("body"));
+        let bdy = document.getElementsByTagName("body");
+        console.log(bdy);
+
+
+        bdy[0].innerHTML = "<h1/>test";
+        //<ul><li>오렌지</ul></li>
+
+        
+
+        let $ul = document.createElement("ul");
+        let $li = document.createElement("li");
+        let $text = document.createTextNode("오렌지");
+        $li.setAttribute("class","lis");
+
+
+        // let $li = document.createElement("li");
+        // let $text = document.createTextNode("사과");
+        $li.appendChild($text);
+        $ul.appendChild($li);
+
+        $text = document.createTextNode("사과");
+        $li = document.createElement("li");
+        $li.setAttribute("class","lis");//???????????
+        $li.appendChild($text);
+        
+        $ul.appendChild($li);
+        
+        bdy[0].appendChild($ul);
+        
+
+        
+        let $div = document.createElement("div");
+        let $p = document.createElement("p");
+        let $h2 = document.createElement("h2");
+        let $text1 = document.createTextNode("hello");
+        let $text2 = document.createTextNode("world");
+        
+        
+        $p.appendChild($text1);
+        $h2.appendChild($text2);
+        $h2.setAttribute("class","hh");//???????????
+        $div.appendChild($p);
+        $div.appendChild($h2);
+        
+        bdy[0].appendChild($div);
+
+
+    </script>
+</body>
+</html>
