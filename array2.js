@@ -119,6 +119,3 @@ let anotherNew = theNew.reduce((a,b,c)=>{
 console.log(anotherNew);
 
 
-
-
-

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json2.html</title>
+    <script>
+        let student={
+            name: "Hong",
+            age: 10,
+            grade: null,
+            marriage: false,
+            birth: new Date(),
+            info:function(){
+                console.log("my name is hong");
+            }
+        }
+
+        let json = JSON.stringify(student)//문자열로 바꿔준다
+        console.log(json);
+        
+        let reStu = JSON.parse(json,function(t,v){
+        
+             console.log(t,v);
+            return (t=='birth'? new Date():v);
+        });
+        console.log(reStu);
+        
+        console.log(reStu.birth.getDate());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

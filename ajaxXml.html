@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajaxXml.html</title>
+    <script>
+        function loadXml() {
+            let xhtp = new XMLHttpRequest();
+
+            xhtp.onreadystatechange = function () {
+                if (xhtp.readyState == 4 && xhtp.status == 200) {
+                    console.log(xhtp.responseXML);
+                    createPage(xhtp.responseXML);
+                }
+            }
+            xhtp.open('get', 'cd_catalog.xml', true); //true면 비동기방식
+            xhtp.send();
+        }
+
+        function createPage(data) {
+            let tr, td, text;
+            let titles=['노래제목','가수','나라','레코드사','기격','출시연도'];
+            
+            let tbl = document.getElementById("tbl");
+            let cds = data.getElementsByTagName('CD');
+           
+            tr = document.createElement("tr");
+            for(let i=0;i<titles.length;i++){
+                td = document.createElement("td");
+                text = document.createTextNode(titles[i]);
+                td.append(text);
+                tr.append(td);
+                
+            } 
+            tbl.append(tr);
+
+            for (let i = 0; i < cds.length; i++) {
+                //row 한건 생성.
+                tr = document.createElement("tr");
+                //컬럼 생성(title,artist,contry..)
+                text = document.createTextNode(titles[i]);
+                for(let j=0;j<6;j++){
+
+                    td = document.createElement("td");
+                    text = document.createTextNode(cds[i].children[j].innerHTML);
+                    td.append(text);
+                    tr.append(td);
+                }
+
+                tbl.append(tr);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>XML 요청</h2><br>
+    <button onclick="loadXml()">클릭</button>
+
+    <table id="tbl" border="1"></table>
+</body>
+
+</html>

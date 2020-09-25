@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajaxXm12.html</title>
+    <script>
+        let cnt =0;
+        let lnth =5;
+        
+        
+        function prev(){
+            cnt--;
+            showCD(cnt);
+        }
+        function next(){
+            if(cnt <= lnth){    
+                cnt++;
+                showCD(cnt);
+            }
+            
+        }
+        function showCD(i){
+            let myDiv = document.getElementById('show');
+            let xhtp = new XMLHttpRequest();
+            let myTag = '';
+            xhtp.onreadystatechange = function(){
+                if(xhtp.readyState == 4 && xhtp.status ==200){
+                    let data = xhtp.responseXML;
+                    console.log(data.getElementsByTagName('CD'));
+                    let cds = data.getElementsByTagName('CD');
+                    console.log('title: ('+i+')'+cds[i].children[0].innerHTML);
+                    console.log('artist: '+cds[i].children[1].innerHTML);
+                    console.log('country: '+cds[i].children[2].innerHTML);
+                    console.log('company: '+cds[i].children[3].innerHTML);
+                    console.log('price: '+cds[i].children[4].innerHTML);
+                    console.log('year: '+cds[i].children[5].innerHTML);
+
+                    myTag += 'title:'+cds[i].children[0].innerHTML
+                    myTag += '<br>artist:'+cds[i].children[1].innerHTML
+                    myTag += '<br>country:'+cds[i].children[2].innerHTML
+                    myTag += '<br>company:'+cds[i].children[3].innerHTML
+                    myTag += '<br>price:'+cds[i].children[4].innerHTML
+                    myTag += '<br>year:'+cds[i].children[5].innerHTML
+                    
+                    myDiv.innerHTML = myTag;
+
+
+                }
+            }
+            xhtp.open('get', 'cd_catalog.xml'); //true면 비동기방식
+            xhtp.send();
+        }
+    </script>
+
+</head>
+<body>
+    <button onclick="showCD(6)">Show</button>
+    <div id= "show"></div>
+    <button onclick="prev()"> << </button>
+    <button onclick="next()"> >> </button>
+
+</body>
+</html>
